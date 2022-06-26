@@ -2,12 +2,13 @@
 
 //use Illuminate\Support\Facades\Auth;
 
+
+use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\Userprofile;
+use App\Http\Livewire\Annualpayment;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Livewire\Annualpayment;
-use App\Http\Livewire\Dashboard;
-use App\Http\Livewire\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,7 @@ Route::middleware([
     Route::get('/dashboards', [HomeController::class, 'index'])->name('dashboard');
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/annual-payment', Annualpayment::class)->name('annualpayment');
-    Route::get('/profile', Profile::class)->name('profile');
+    Route::get('/profile', Userprofile::class)->name('profile');
 });
 
 

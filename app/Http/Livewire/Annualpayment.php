@@ -66,27 +66,7 @@ class Annualpayment extends Component
             $link = json_decode($result);
 
 
-            // store transaction
-
-
-           /*  $trans = Transaction::create([
-                'amount' => $amount,
-                'firstname' => $request->firstName,
-                'lastname' => $request->lastName,
-                'address' => $request->address,
-                'phone' => $request->phone,
-                'email' => $request->email,
-                'reference' => $ref,
-                'status' => 'pending',
-                'month' => date('M'),
-                'month_id' => date('m')
-            ]); */
-
-
-            // store booking
-
-            //dd($this->membershiptype_id);
-            // paystack payment process
+            
             return Redirect::to($link->data->authorization_url);
 
             
@@ -97,33 +77,21 @@ class Annualpayment extends Component
 
     public function handleGatewayAnnual()
     {
-        $msg = $resp = '';
-
-       // $user = Auth::user();
-       // dd($user);
-
+    
         try {
             $paymentDetails = Paystack::getPaymentData();
 
            // dd($paymentDetails);
 
             // store on accounts table
-           // $this->membership_group = $paymentDetails['data']['metadata']['membershipgroup'];
-
-           // $paymentRef = ($paymentDetails['data']['reference']);
+          
     
             $paymentStatus = $paymentDetails['data']['status'];
            // json_decode($paymentStatus)
     
             if ($paymentStatus == 'success') {
 
-              //  $user->membershipgroup = $this->membership_group;
-               // $user->status = true;
-
-               // dd($this->membershiptype_id);
-
-               // $user->save();
-    
+               
                 Account::create([
                     'amount' => $paymentDetails['data']['amount']/100,
                     'reference' => $paymentDetails['data']['reference'],
@@ -132,12 +100,12 @@ class Annualpayment extends Component
                 ]);
 
     
-                $resp = 'Vehicle Booking completed. Thank you for your patronge!';
+               // $resp = 'Vehicle Booking completed. Thank you for your patronge!';
             } else {
     
  
     
-                $resp = 'Vehicle Booking failed. Please try again!';
+               // $resp = 'Vehicle Booking failed. Please try again!';
             }
         } catch (\Throwable $th) {
             throw $th;

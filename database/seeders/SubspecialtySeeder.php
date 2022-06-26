@@ -30,7 +30,7 @@ class SubspecialtySeeder extends Seeder
                 DB::table('subspecialties')->insert([
                     'specialty_id' => $x,
                     'name' => $x_value[$row],
-                    'created_at' => now(),
+                    'created_at' => now(), 
                     'updated_at' => now()
                 ]);
             }

@@ -9,6 +9,7 @@ use App\Models\Specialty;
 use Illuminate\Support\Str;
 use App\Models\Subspecialty;
 use App\Models\MembershipType;
+use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Unicodeveloper\Paystack\Facades\Paystack;
@@ -78,6 +79,9 @@ class Dashboard extends Component
                  'metadata' => [
                     'membershipgroup' => $this->membership_group,
                     'about' => $this->about,
+                    'chapter_id' => $this->chapter_id,
+                    'specialty_id' => $this->specialty_id,
+                    'subspecialty_id' => $this->subspecialty_id,
                   ]
 
             ];
@@ -142,7 +146,7 @@ class Dashboard extends Component
       // try {
             $paymentDetails = Paystack::getPaymentData();
 
-            //dd($paymentDetails);
+           // dd($paymentDetails);
 
            // $this->membership_group = $paymentDetails['data']['metadata']['membershipgroup'];
 
@@ -167,6 +171,14 @@ class Dashboard extends Component
                     'user_id' => auth()->id(),
                     'purpose' => 1,
                 ]);
+
+                Profile::create([
+                    'chapter_id' => $paymentDetails['data']['metadata']['chapter_id'],
+                    'specialty_id' => $paymentDetails['data']['metadata']['specialty_id'],
+                    'user_id' => auth()->id(),
+                    'subspecialty_id' => $paymentDetails['data']['metadata']['subspecialty_id'],
+                ]);
+
     
 
     
@@ -198,7 +210,7 @@ class Dashboard extends Component
             return view('livewire.userpayment', [
                 'specialties' => Specialty::all(),
                 'chapters' => Chapter::all(),
-                'subspecialtied' => Subspecialty::where('specialty_id', 1)->get(),
+                'subspecialties' => Subspecialty::where('specialty_id', 1)->get(),
                 'membershiptypes' => MembershipType::where('type', 'New')->get()
             ]);
         }

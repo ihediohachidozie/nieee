@@ -18,7 +18,7 @@
     <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
         <label class="block mt-4 text-sm">
             <span class="text-gray-700 dark:text-gray-400">
-                Chapter
+                Chapter 
             </span>
             <select wire:model="chapter_id" id="chapter_id" class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
                 @foreach($chapters as $chapter)
