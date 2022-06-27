@@ -143,7 +143,7 @@ class Dashboard extends Component
         $user = Auth::user();
        // dd($user);
 
-      // try {
+        try {
             $paymentDetails = Paystack::getPaymentData();
 
            // dd($paymentDetails);
@@ -189,10 +189,10 @@ class Dashboard extends Component
     
                 $resp = 'Vehicle Booking failed. Please try again!';
             }
-      //  } catch (\Throwable $th) {
-         //   throw $th;
-       //     $resp = 'Vehicle Booking completed. Thank you for your patronge!';
-      //  }
+        } catch (\Throwable $th) {
+            throw $th;
+            $resp = 'Vehicle Booking completed. Thank you for your patronge!';
+        }
 
        
         return redirect('/dashboard')->withErrors([$msg => $resp]);;
@@ -205,7 +205,6 @@ class Dashboard extends Component
      */
     public function render()
     {
-    
         if (auth()->user()->membershipgroup == null) {
             return view('livewire.userpayment', [
                 'specialties' => Specialty::all(),

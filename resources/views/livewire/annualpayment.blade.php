@@ -1,5 +1,5 @@
 <div class="container px-6 py-2 mx-auto grid">
-   <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+    <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
         Membership Annual Payment
     </h2>
     <!-- CTA -->
@@ -17,43 +17,43 @@
 
 
 
-        <div class="mt-4 text-sm">
-            <span class="text-gray-700 dark:text-gray-400">
-                Membership Type
-            </span>
-            <div class="mt-2">
-              
-                <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
-                    <input type="radio" class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" name="accountType" value="{{$cost}}" checked />
-                    <span class="ml-2">{{$name}}{{' : '}} @money($cost)</span>
-                </label>
-       
-            </div>
-           
-        </div>
+    <div class="mt-4 text-sm">
+        <span class="text-gray-700 dark:text-gray-400">
+            Membership Type
+        </span>
+        <div class="mt-2">
 
-
-
-
-
-        <div class="flex mt-6 text-sm">
-            <label class="flex items-center dark:text-gray-400">
-                <input type="checkbox" wire:click="checkEvent($event.target.value)" class="text-purple-600 form-checkbox focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" />
-                <span class="ml-2">
-                    I agree to the
-                    <a href="#" class="underline">NIEEE Membership policy</a>
-                </span>
+            <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
+                <input type="radio" class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" name="accountType" value="{{$cost}}" checked />
+                <span class="ml-2">{{$name}}{{' : '}} @money($cost)</span>
             </label>
+
         </div>
-        <div class="py-4">
-            <button wire:click="annual"  class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-                Make Payment
-            </button>
-            <button wire:click="pay"  class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-                Upgrade Membership Type
-            </button>
-        </div>
-        <div class="w-full overflow-hidden rounded-lg shadow-xs">
+
+    </div>
+
+
+
+
+
+    <div class="flex mt-6 text-sm">
+        <label class="flex items-center dark:text-gray-400">
+            <input type="checkbox" wire:click="checkEvent($event.target.value)" class="text-purple-600 form-checkbox focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" />
+            <span class="ml-2">
+                I agree to the
+                <a href="#" class="underline">NIEEE Membership policy</a>
+            </span>
+        </label>
+    </div>
+    <div class="py-4">
+        <button wire:click="annual" class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+            Make Payment
+        </button>
+        <a href="{{route('memberupgrade')}}" class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+            Upgrade Membership Type
+        </a>
+    </div>
+    <div class="w-full overflow-hidden rounded-lg shadow-xs">
         <div class="w-full overflow-x-auto">
             <table class="w-full whitespace-no-wrap">
                 <thead>
@@ -89,7 +89,7 @@
                         </td>
                         <td class="px-4 py-3 text-xs">
                             <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
-                               {{$item->reference}}
+                                {{$item->reference}}
                             </span>
                         </td>
                         <td class="px-4 py-3 text-sm">

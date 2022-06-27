@@ -9,6 +9,8 @@ use App\Http\Livewire\Annualpayment;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Livewire\Experience;
+use App\Http\Livewire\Membershipupgrade;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +36,8 @@ Route::middleware([
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/annual-payment', Annualpayment::class)->name('annualpayment');
     Route::get('/profile', Userprofile::class)->name('profile');
+    Route::get('/workexperience', Experience::class)->name('experience');
+    Route::get('/upgrade', Membershipupgrade::class)->name('memberupgrade');
 });
 
 
