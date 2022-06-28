@@ -32,7 +32,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboards', [HomeController::class, 'index'])->name('dashboard');
+   // Route::get('/dashboards', [HomeController::class, 'index'])->name('dashboard');
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/annual-payment', Annualpayment::class)->name('annualpayment');
     Route::get('/profile', Userprofile::class)->name('profile');
