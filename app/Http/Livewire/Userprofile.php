@@ -127,9 +127,12 @@ class Userprofile extends Component
         $this->kphone = $userP[0]['kphone'];
 
         $name = $userP[0]['nextofkin'];
-        $pos = strpos($name, " ");
-        $this->kfirstName = substr($name, 0, $pos);
-        $this->klastName = substr($name, $pos + 1);
+        if(isset($name)){
+
+            $pos = strpos($name, " ");
+            $this->kfirstName = substr($name, 0, $pos);
+            $this->klastName = substr($name, $pos + 1);
+        }
     }
 
 

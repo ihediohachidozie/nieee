@@ -3,7 +3,7 @@
         <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
             NIEEE Portal
         </a>
-        @if (auth()->user()->membershipgroup != null)
+
         <ul class="mt-6">
             <li class="relative px-6 py-3">
                 @if(Request::route()->getName() == 'dashboard')
@@ -29,6 +29,7 @@
 
             </li>
         </ul>
+    @if (auth()->user()->membershipgroup != null)
         <ul>
             <li class="relative px-6 py-3">
                 @if(Request::route()->getName() == 'profile')
