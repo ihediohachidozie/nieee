@@ -23,7 +23,7 @@ class Annualpayment extends Component
 
     public function annual()
     {
-      //  dd($this->getUser()[0]['cost'].'00');
+
         try {
 
             $msg = '';
@@ -31,14 +31,14 @@ class Annualpayment extends Component
             $ref = Str::random();
 
             // url to go to after payment
-            $callback_url = route('annual');
+          //  $callback_url = route('annual');
 
             $url = "https://api.paystack.co/transaction/initialize";
             $fields = [
                 'email' => auth()->user()->email,
-                'amount' => $this->getUser()[0]['cost'].'00',
+                'amount' => $this->getUser()[0]['cost']*100,
                 'reference' => $ref,
-                'callback_url' => $callback_url,
+                'callback_url' => route('annual'),
                  'metadata' => [
                     //'membershipgroup' => $this->membership_group,
                  //   'userid' => auth()->id(),
@@ -109,21 +109,21 @@ class Annualpayment extends Component
             }
         } catch (\Throwable $th) {
             throw $th;
-            $resp = 'Vehicle Booking completed. Thank you for your patronge!';
+           // $resp = 'Vehicle Booking completed. Thank you for your patronge!';
        }
 
        
-        return redirect('/dashboard')->withErrors([$msg => $resp]);;
+        return redirect()->route('dashboard');
     }
 
     public function render()
     {
-        //dd($this->getUser()[0]['cost']);
+
         return view('livewire.annualpayment',[
             'cost' => $this->getUser()[0]['cost'],
             'name' => $this->getUser()[0]['name'],
             'data' => auth()->user()->accounts,
-           // 'purpose' => $this->purpose
+
         ]);
     }
 }

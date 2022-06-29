@@ -60,6 +60,7 @@ class Experience extends Component
         ]);
 
        $this->clearFields();
+       $this->closeModal();
     }
 
     public function clearFields()

@@ -57,25 +57,22 @@ class Dashboard extends Component
 
         try {
 
-            $msg = '';
-
-
             $member = MembershipType::where('id', $this->membershiptype_id)->get();
-            $membership_cost = $member[0]['cost'].'00';
+            $membership_cost = $member[0]['cost']*100;
             $this->membership_group = $member[0]['group'];
 
 
             $ref = Str::random();
 
             // url to go to after payment
-            $callback_url = route('callback');
+           // $callback_url = route('callback');
 
             $url = "https://api.paystack.co/transaction/initialize";
             $fields = [
                 'email' => auth()->user()->email,
                 'amount' => $membership_cost,
                 'reference' => $ref,
-                'callback_url' => $callback_url,
+                'callback_url' => route('callback'),
                  'metadata' => [
                     'membershipgroup' => $this->membership_group,
                     'about' => $this->about,
@@ -106,26 +103,6 @@ class Dashboard extends Component
             $link = json_decode($result);
 
 
-            // store transaction
-
-
-           /*  $trans = Transaction::create([
-                'amount' => $amount,
-                'firstname' => $request->firstName,
-                'lastname' => $request->lastName,
-                'address' => $request->address,
-                'phone' => $request->phone,
-                'email' => $request->email,
-                'reference' => $ref,
-                'status' => 'pending',
-                'month' => date('M'),
-                'month_id' => date('m')
-            ]); */
-
-
-            // store booking
-
-            //dd($this->membershiptype_id);
             // paystack payment process
             return Redirect::to($link->data->authorization_url);
 
@@ -182,20 +159,20 @@ class Dashboard extends Component
     
 
     
-                $resp = 'Vehicle Booking completed. Thank you for your patronge!';
+               // $resp = 'Vehicle Booking completed. Thank you for your patronge!';
             } else {
     
  
     
-                $resp = 'Vehicle Booking failed. Please try again!';
+               // $resp = 'Vehicle Booking failed. Please try again!';
             }
         } catch (\Throwable $th) {
             throw $th;
-            $resp = 'Vehicle Booking completed. Thank you for your patronge!';
+           // $resp = 'Vehicle Booking completed. Thank you for your patronge!';
         }
 
        
-        return redirect('/dashboard')->withErrors([$msg => $resp]);;
+        return redirect()->route('dashboard');
     }
 
     /**

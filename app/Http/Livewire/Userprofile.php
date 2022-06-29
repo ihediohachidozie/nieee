@@ -166,8 +166,7 @@ class Userprofile extends Component
             'address' => $this->address,
             'phone' => $this->phone,
             'state' => $this->state,
-            'lga' => $this->lga,
-            ''
+            'lga' => $this->lga
 
         ]);
     }
